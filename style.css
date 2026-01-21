@@ -14,15 +14,31 @@
 }
 
 body {
-    /* Overlay opacity set to 0.7 to tone down the background image further */
+    /* Overlay opacity set to 0.7 */
     background-image: linear-gradient(rgba(252, 228, 236, 0.7), rgba(252, 228, 236, 0.7)), url('images/castle.jpg');
+    
+    /* Forces the image to cover the screen without stretching out of proportion */
     background-size: cover;
-    background-position: center;
+    
+    /* Centers horizontally and vertically */
+    background-position: center center; 
+    
+    /* Ensures background doesn't scroll with content */
     background-attachment: fixed;
+    
+    /* Fix for mobile browsers where 'fixed' can sometimes be glitchy */
+    background-repeat: no-repeat;
+    
+    /* Standard styling */
     background-color: var(--soft-pink);
     font-family: 'Quicksand', sans-serif;
     color: #444;
     line-height: 1.6;
+    
+    /* Ensure the body always takes up at least the full screen height */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
     position: relative; 
     overflow-x: hidden;
 }

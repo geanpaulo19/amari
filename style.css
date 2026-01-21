@@ -6,7 +6,6 @@
     --sky-blue: #e3f2fd;
 }
 
-/* Remove default browser gaps */
 * {
     margin: 0;
     padding: 0;
@@ -14,33 +13,35 @@
 }
 
 body {
-    /* Overlay opacity set to 0.7 */
-    background-image: linear-gradient(rgba(252, 228, 236, 0.7), rgba(252, 228, 236, 0.7)), url('images/castle.jpg');
-    
-    /* Forces the image to cover the screen without stretching out of proportion */
-    background-size: cover;
-    
-    /* Centers horizontally and vertically */
-    background-position: center center; 
-    
-    /* Ensures background doesn't scroll with content */
-    background-attachment: fixed;
-    
-    /* Fix for mobile browsers where 'fixed' can sometimes be glitchy */
-    background-repeat: no-repeat;
-    
-    /* Standard styling */
     background-color: var(--soft-pink);
     font-family: 'Quicksand', sans-serif;
     color: #444;
     line-height: 1.6;
-    
-    /* Ensure the body always takes up at least the full screen height */
     min-height: 100vh;
-    margin: 0;
-    padding: 0;
     position: relative; 
-    overflow-x: hidden;
+    /* Remove background properties from here */
+}
+
+/* This replaces the body background to fix mobile issues */
+body::before {
+    content: "";
+    position: fixed; /* Fixes the image to the screen, not the content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Your background logic moved here */
+    background-image: linear-gradient(rgba(252, 228, 236, 0.7), rgba(252, 228, 236, 0.7)), url('images/castle.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    /* Ensures it stays behind everything */
+    z-index: -1; 
+    
+    /* Hardware acceleration to keep it smooth on mobile */
+    will-change: transform;
 }
 
 header {
@@ -51,7 +52,7 @@ header {
     overflow: hidden;
 }
 
-/* Ensure header content stays above background decor */
+/* Ensure content stays above */
 header h1, 
 header .subtitle, 
 header .profile-container, 
@@ -61,14 +62,24 @@ header p {
     z-index: 10;
 }
 
-/* --- Floating Decorations (Lowered Z-Index & Opacity) --- */
 .decor {
     position: absolute;
     font-size: 2.5rem;
-    opacity: 0.3; /* Further lowered for a subtle, dreamy effect */
+    opacity: 0.3;
     animation: bounce 3s infinite ease-in-out;
     pointer-events: none;
-    z-index: 1; /* Puts emojis behind all text and images */
+    z-index: 1;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Critical fix for mobile layout overflow */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* --- Profile Photo --- */

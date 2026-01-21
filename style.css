@@ -6,6 +6,7 @@
     --sky-blue: #e3f2fd;
 }
 
+/* Remove default browser gaps */
 * {
     margin: 0;
     padding: 0;
@@ -19,29 +20,35 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     position: relative; 
-    /* Remove background properties from here */
+    overflow-x: hidden;
 }
 
-/* This replaces the body background to fix mobile issues */
+/* Fixed Background Layer */
 body::before {
     content: "";
-    position: fixed; /* Fixes the image to the screen, not the content */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     
-    /* Your background logic moved here */
+    /* Desktop Opacity: 0.7 */
     background-image: linear-gradient(rgba(252, 228, 236, 0.7), rgba(252, 228, 236, 0.7)), url('images/castle.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     
-    /* Ensures it stays behind everything */
     z-index: -1; 
-    
-    /* Hardware acceleration to keep it smooth on mobile */
     will-change: transform;
+}
+
+/* Mobile Background Adjustment */
+@media (max-width: 768px) {
+    body::before {
+        /* Increased Opacity for Mobile: 0.85 
+           This tones down the castle image so text and photo cards are clearer on small screens */
+        background-image: linear-gradient(rgba(252, 228, 236, 0.85), rgba(252, 228, 236, 0.85)), url('images/castle.jpg');
+    }
 }
 
 header {
@@ -52,7 +59,7 @@ header {
     overflow: hidden;
 }
 
-/* Ensure content stays above */
+/* Ensure header content stays above background decor */
 header h1, 
 header .subtitle, 
 header .profile-container, 
@@ -76,10 +83,10 @@ header p {
     50% { transform: translateY(-15px); }
 }
 
-/* Critical fix for mobile layout overflow */
+/* Final safety for mobile width */
 html, body {
-    overflow-x: hidden;
     width: 100%;
+    overflow-x: hidden;
 }
 
 /* --- Profile Photo --- */

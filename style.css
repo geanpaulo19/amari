@@ -33,7 +33,7 @@ body::before {
     height: 100%;
     
     /* Desktop Opacity: 0.7 */
-    background-image: linear-gradient(rgba(252, 228, 236, 0.7), rgba(252, 228, 236, 0.7)), url('images/castle.jpg');
+    background-image: linear-gradient(rgba(252, 228, 236, 0.7), rgba(252, 228, 236, 0.7)), url('images/background.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

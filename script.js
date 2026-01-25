@@ -1,5 +1,5 @@
 // Set the date we're counting down to
-const birthdayDate = new Date("Feb 28, 2026 10:00:00").getTime();
+const birthdayDate = new Date("Feb 28, 2026 10:30:00").getTime();
 
 const updateCountdown = setInterval(function() {
     const now = new Date().getTime();
@@ -33,7 +33,7 @@ function downloadICS() {
     // --- EDIT THE DATES & TIMES ---
     // Format: YYYYMMDDTHHMMSS
     // Example: 20260228T110000 is Feb 28, 2026 at 11:00:00 AM
-    const startDate = "20260228T110000"; // Change 110000 to your start time
+    const startDate = "20260228T103000"; // Change 110000 to your start time
     const endDate = "20260228T160000";   // Change 160000 to your end time (4:00 PM)
 
     const icsData = [

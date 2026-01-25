@@ -819,7 +819,8 @@ footer {
 .entourage-column h3 {
     font-family: 'Dancing Script', cursive;
     color: var(--deep-pink);
-    font-size: 1.8rem;
+    /* Using clamp to match your other H2/H3 headers */
+    font-size: clamp(1.5rem, 5vw, 1.8rem); 
     margin-bottom: 15px;
 }
 
@@ -829,8 +830,9 @@ footer {
 }
 
 .name-list li {
-    font-size: 1.1rem;
-    color: #5d4037;
+    /* Using 1.1rem for desktop and 1rem for mobile to match gratitude message */
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    color: #5d4037; /* Matching your earthy brown text color */
     margin-bottom: 10px;
     font-weight: 500;
 }

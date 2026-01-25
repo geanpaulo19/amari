@@ -873,6 +873,11 @@ footer {
         font-size: 1rem;
         padding: 4px 15px;
     }
+
+    .date-emphasis {
+        display: inline-block; /* Helps with spacing on small screens */
+        margin-top: 5px;
+    }
 }
 
 .account-label {
@@ -883,4 +888,14 @@ footer {
     font-weight: 600;
     display: block;
     text-align: center;
+}
+
+/* --- RSVP Date Emphasis --- */
+.date-emphasis {
+    color: var(--deep-pink);
+    background-color: rgba(240, 98, 146, 0.1); /* Very soft pink glow */
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-weight: 700;
+    white-space: nowrap; /* Prevents the date from splitting across lines */
 }
